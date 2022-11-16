@@ -30,7 +30,7 @@ const Intro = () => {
                 <Button variant="danger"
                     size="lg"
                     style={visible ? {} : { display: 'none' }}
-                    onClick={() => { nav('/') }}
+                    onClick={() => { nav('/home') }}
                 >
                     다음
                 </Button>

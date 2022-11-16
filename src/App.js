@@ -14,10 +14,10 @@ function App() {
   
   return (
     <div>
-      {location.pathname != "/intro" && <Navigation />}
+      {location.pathname != "/" && <Navigation />}
       <Routes>
-        <Route path="/intro" element={<Intro />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Intro />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/movies/:id" element={<MovieDetail />} />
      </Routes>
