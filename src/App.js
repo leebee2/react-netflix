@@ -11,6 +11,7 @@ import { useLocation } from "react-router-dom";
 function App() {
   const location = useLocation();
 
+  
   return (
     <div>
       {location.pathname != "/intro" && <Navigation />}
