@@ -30,17 +30,6 @@ body {
     line-height: 40px;
 }
 
-@media screen and (max-width: 63rem) {
-    .intro-typing h2 {
-        font-size: 20px;
-    }
-
-    .intro-typing {
-        left: 50px;
-        right: 50px;
-    }
-}
-
 
 /* 목록 */
 .nav-item {
@@ -65,8 +54,8 @@ body {
     margin: 0 auto;
 }
 
-.movie_container h3{
-    margin : 25px 0 10px 0;
+.movie_container h3 {
+    margin: 25px 0 10px 0;
 }
 
 /* 배너 */
@@ -91,23 +80,6 @@ body {
     width: 50%;
     margin: 100px;
     z-index: 1;
-}
-
-@media screen and (max-width: 63rem) {
-    .banner-info h1 {
-        font-size: 30px;
-
-    }
-
-    .banner-info span {
-        font-size: 10px;
-
-    }
-
-    .banner-info {
-        width: 80%;
-        margin: 50px;
-    }
 }
 
 /* 영화 카드 */
@@ -156,7 +128,7 @@ body {
     line-height: 10px;
 }
 
-.card-icon-row{
+.card-icon-row {
     padding-top: 20px;
 }
 
@@ -175,4 +147,42 @@ body {
 .card:hover .overlay hr {
     width: 100%;
     transition-delay: 0.3s;
+}
+
+
+@media screen and (max-width: 63rem) {
+    .banner-info h1 {
+        font-size: 30px;
+
+    }
+
+    .banner-info span {
+        font-size: 10px;
+
+    }
+
+    .banner-info {
+        width: 80%;
+        margin: 50px;
+    }
+
+    .intro-typing h2 {
+        font-size: 20px;
+    }
+
+    .intro-typing {
+        left: 50px;
+        right: 50px;
+    }
+
+    .overlay {
+        opacity: 1;
+    }
+
+    .head hr {
+        display: block;
+        width: 100%;
+        border-bottom: solid 1px white;
+        transition: all 0.5s;
+    }
 }
