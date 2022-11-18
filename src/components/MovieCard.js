@@ -2,6 +2,9 @@ import React from 'react';
 import { Badge, Container, Col, Row} from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheckToSlot } from '@fortawesome/free-solid-svg-icons'
+
 
 
 const MovieCard = ({ item }) => {
@@ -13,16 +16,14 @@ const MovieCard = ({ item }) => {
             to={`/movie/${item.id}`}
             className='card'
             style={{
-                backgroundImage: "url(" +
-                    `${imgBaseUrl}${item.backdrop_path}` +
-                    ")",
-                height : "200px"
+                backgroundImage: "url(" + `${imgBaseUrl}${item.backdrop_path}`+")",
+                height : "220px"
             }}>
             
             <Container className='overlay'>
                 <Row>
                     <Col className='head'>
-                        <p>{item.title}</p>
+                        <p>{item.title}<span>({item.release_date.substr(0, 4)})</span></p>
                         <hr/>
                     </Col>
                 </Row>
@@ -33,28 +34,22 @@ const MovieCard = ({ item }) => {
                         </Badge>)}
                     </Col>
                 </Row>
-                <Row>
-                    <Col>{item.vote_average}</Col>
-                    <Col>{item.adult ? '청불' : ''}</Col>
+                <Row className='card-icon-row'>
+                    <Col className='card-text'>
+                        <img width={20}
+                            src={process.env.PUBLIC_URL + `/img/imdb.png`}
+                            alt="imdb"
+                        />
+                        {item.vote_average}
+                    </Col>
+                    <Col className='card-text'>
+                        <FontAwesomeIcon icon={faCheckToSlot} />
+                        {item.vote_count}
+                    </Col>
+                    <Col sm={5}>
+                    </Col>
                 </Row>
             </Container>
-
-            {/* <div className='overlay'>
-                <div className="items" />
-                <div className='items head'>
-                    <p>{item.title}</p>
-                    <hr />
-                </div>
-                <div>{item.genre_ids.map((id, index) =>
-                    <Badge bg="danger" key={index}>
-                        {genreList.find(item => item.id == id).name}
-                    </Badge>)}
-                </div>
-                <div>
-                    <span>{item.vote_average}</span>
-                    <span>{item.adult ? '청불' : ''}</span>
-                </div>
-            </div> */}
         </Link>
     );
 };

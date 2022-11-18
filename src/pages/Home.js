@@ -4,29 +4,33 @@ import { Banner, MovieSlide } from '../components';
 import Loadingbar from '../Modal/Loadingbar';
 import { movieAction } from '../redux/actions/movieAction';
 
+const dataName = [
+    { title: '최신 인기 영화', dname: 'popularMovies' },
+    { title: 'TMDB 인기 영화', dname: 'topRatedMovies' },
+    { title: '개봉 예정 영화', dname: 'upcomingMovies' }
+]
 
 const Home = () => {
     const dispatch = useDispatch();
-    const { popularMovies, topRatedMovies, upcomingMovies, loading } = useSelector(state => state.movie);
+    const movie = useSelector(state => state.movie);
 
+    console.log(movie);
     useEffect(() => {
         dispatch(movieAction.getMovies());
     }, [])
 
 
-    if (loading) {
-        return <Loadingbar loading={loading} />
+    if (movie.loading) {
+        return <Loadingbar loading={movie.loading} />
     }
     return (
         <div>
-            {popularMovies.results && <Banner movie={popularMovies.results[0]} />}
+            {movie.popularMovies.results && <Banner movie={movie.popularMovies.results[0]} />}
             <div className='movie_container'>
-                <h3>인기있는 영화</h3>
-                <MovieSlide movies={popularMovies} />
-                <h3>TMDB 인기영화</h3>
-                <MovieSlide movies={topRatedMovies} />
-                <h3>개봉 예정 영화</h3>
-                <MovieSlide movies={upcomingMovies} />
+                {dataName.map((item,index) => (<span key={index}>
+                    <h3>{item.title}</h3>
+                    <MovieSlide movies={movie[item.dname]} />
+                </span>))}
             </div>
         </div>
     );

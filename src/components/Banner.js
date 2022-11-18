@@ -6,7 +6,7 @@ const Banner = ({ movie }) => {
 
     return (
         <div className="banner" style={{
-            backgroundImage: `URL(${imgBaseUrl}${movie.poster_path})`
+            backgroundImage: `URL(${imgBaseUrl}${movie.backdrop_path})`
         }}>
             <div className='banner-info'>
                 <h1>{movie.title}</h1>
