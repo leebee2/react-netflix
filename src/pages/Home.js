@@ -14,7 +14,6 @@ const Home = () => {
     const dispatch = useDispatch();
     const movie = useSelector(state => state.movie);
 
-    console.log(movie);
     useEffect(() => {
         dispatch(movieAction.getMovies());
     }, [])

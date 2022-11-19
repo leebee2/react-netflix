@@ -3,6 +3,7 @@ body {
     color: white !important;
 }
 
+
 /* 인트로 */
 .intro {
     height: 100vh;
@@ -31,13 +32,25 @@ body {
 }
 
 
-/* 목록 */
-.nav-item {
+/* 네비게이션바 */
+.nav-bar-down {
+    position: fixed;
+    z-index: 2;
+    background-color: black;
+    width: 100%;
+}
+
+.nav-bar-up {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.nav-bar-item {
     color: white;
     text-decoration: none;
     margin-right: 20px;
-
-    z-index: 1;
 }
 
 /* 홈화면 */
@@ -63,7 +76,7 @@ body {
     display: flex;
     align-items: end;
     width: 100%;
-    height: 600px;
+    height: 800px;
     background-position: 50%;
 }
 
@@ -80,6 +93,26 @@ body {
     width: 50%;
     margin: 100px;
     z-index: 1;
+}
+
+.banner-info div{
+    margin-top: 10px;
+}
+
+.banner-btn{
+    margin-left: 10px;
+}
+
+.banner-area {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+}
+
+.banner-video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
 /* 영화 카드 */
