@@ -3,7 +3,6 @@ import { Badge, Container, Col, Row} from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheckToSlot } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -13,10 +12,10 @@ const MovieCard = ({ item }) => {
 
     return (
         <Link
-            to={`/movie/${item.id}`}
+            to={`/movies/${item.id}`}
             className='card'
             style={{
-                backgroundImage: "url(" + `${imgBaseUrl}${item.backdrop_path}`+")",
+                backgroundImage: `url('${imgBaseUrl}${item.backdrop_path}')`,
                 height : "220px"
             }}>
             
@@ -28,7 +27,8 @@ const MovieCard = ({ item }) => {
                     </Col>
                 </Row>
                 <Row>
-                    <Col>{item.genre_ids.map((id, index) =>
+                    <Col>
+                        {item.genre_ids.map((id, index) =>
                         <Badge bg="danger" key={index}>
                             {genreList.find(item => item.id == id).name}
                         </Badge>)}
@@ -43,7 +43,7 @@ const MovieCard = ({ item }) => {
                         {item.vote_average}
                     </Col>
                     <Col className='card-text'>
-                        <FontAwesomeIcon icon={faCheckToSlot} />
+                        <FontAwesomeIcon icon="fa-check-to-slot" />
                         {item.vote_count}
                     </Col>
                     <Col sm={5}>

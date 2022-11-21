@@ -1,31 +1,38 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button, Container, Form, Nav, Navbar } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from 'react-redux';
 
 
 const Navigation = () => {
     const nav = useNavigate();
+    const location = useLocation();
     const [navShow, setNavShow] = useState(false);
+    const { mainVideoClick } = useSelector(state => state.main)
 
     useEffect(() => {
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 100) { 
-                setNavShow(true);
-            } else {
-                setNavShow(false);
-            }
-        })
+        if (location.pathname.indexOf('/home') == -1) {
+            setNavShow(true);
+        } else { //홈화면일 경우
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 100) {
+                    setNavShow(true);
+                } else {
+                    setNavShow(false);
+                }
+            })
 
-        return () => {
-            window.removeEventListener("scroll", () => { })
+            return () => {
+                window.removeEventListener("scroll", () => { })
+            }
         }
     }, [])
 
+    console.log(navShow);
 
     return (
-        <div className={navShow ? "nav-bar-down" : "nav-bar-up"}>
+        <div className={navShow || mainVideoClick ? "nav-bar-down" : "nav-bar-up"}>
             <Navbar bg="navbar-inverse" variant='dark' expand="lg" >
                 <Container fluid>
                     <Navbar.Brand href="#">
@@ -52,7 +59,7 @@ const Navigation = () => {
                                 aria-label="Search"
                             />
                             <Button variant="outline-danger">
-                                <FontAwesomeIcon icon={faMagnifyingGlass} />
+                                <FontAwesomeIcon icon="fa-magnifying-glass" />
                             </Button>
                         </Form>
                     </Navbar.Collapse>

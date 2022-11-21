@@ -29,17 +29,30 @@ function getMovies() {
     }
 }
 
-function getMovieDetail(id) {
+function getMovieVideo(id) {
     return async (dispatch) => {
         try {
 
-            const movieDetailApi = await api.get(`/movie/${id}/videos?api_key=${API_KEY}&language=ko`)
+            const movieVideoApi = await api.get(`/movie/${id}/videos?api_key=${API_KEY}&language=ko`)
 
-            dispatch({ type: 'GET_MOVIE_DETAIL', payload: { movieDetail: movieDetailApi.data.results[0] }})
+            dispatch({ type: 'GET_MOVIE_VIDEO', payload: { movieVideo: movieVideoApi.data.results[0] }})
         } catch (error) {
             console.log(error);
         }
     }
 }
 
-export const movieAction = { getMovies, getMovieDetail };
+function getMovieDetail(id) {
+    return async (dispatch) => {
+        try {
+
+            const movieDetailApi = await api.get(`/movie/${id}?api_key=${API_KEY}&language=ko`)
+
+            dispatch({ type: 'GET_MOVIE_DETAIL', payload: { movieDetail: movieDetailApi.data } })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+export const movieAction = { getMovies, getMovieVideo, getMovieDetail };

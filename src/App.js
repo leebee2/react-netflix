@@ -8,6 +8,13 @@ import { Navigation } from './components';
 import { useLocation } from "react-router-dom";
 
 
+// fontawesome global
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCheckToSlot, faMagnifyingGlass, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faCheckToSlot, faMagnifyingGlass, faCircleInfo)
+
+
 function App() {
   const location = useLocation();
 
