@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Banner, MovieSlide } from '../components';
 import Loadingbar from '../Modal/Loadingbar';
@@ -13,11 +13,14 @@ const dataName = [
 const Home = () => {
     const dispatch = useDispatch();
     const movie = useSelector(state => state.movie);
-
-    useEffect(() => {
+    
+    const getMovies = useCallback(() => {
         dispatch(movieAction.getMovies());
-    }, [])
-
+    }, [dispatch]);
+    
+    useEffect(() => {
+        getMovies();
+    }, [getMovies])
 
     if (movie.loading) {
         return <Loadingbar loading={movie.loading} />

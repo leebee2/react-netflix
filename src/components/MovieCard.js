@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
-
 const MovieCard = ({ item }) => {
     const { genreList } = useSelector(state => state.movie);
     const imgBaseUrl = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2';
@@ -30,7 +29,7 @@ const MovieCard = ({ item }) => {
                     <Col>
                         {item.genre_ids.map((id, index) =>
                         <Badge bg="danger" key={index}>
-                            {genreList.find(item => item.id == id).name}
+                            {genreList.find(item => item.id === id).name}
                         </Badge>)}
                     </Col>
                 </Row>
@@ -47,6 +46,11 @@ const MovieCard = ({ item }) => {
                         {item.vote_count}
                     </Col>
                     <Col sm={5}>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        
                     </Col>
                 </Row>
             </Container>

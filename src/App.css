@@ -1,8 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300&display=swap');
+
 body {
     background-color: black !important;
     color: white !important;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
+@media screen and (max-width: 50rem) {
+
+    .banner-info {
+        width: 80%;
+        margin: 50px;
+    }
+
+    .banner-info h1 {
+        font-size: 30px;
+
+    }
+
+    .banner-info span {
+        font-size: 10px;
+
+    }
+
+    .intro-typing h2 {
+        font-size: 20px;
+    }
+
+    .intro-typing {
+        left: 50px;
+        right: 50px;
+    }
+
+    .overlay {
+        opacity: 1;
+    }
+
+    .head hr {
+        display: block;
+        width: 100%;
+        border-bottom: solid 1px white;
+        transition: all 0.5s;
+    }
+}
 
 /* 인트로 */
 .intro {
@@ -104,11 +144,16 @@ body {
 }
 
 .banner-video {
-    position: relative;
+    /* position: relative;
     width: 100%;
     height: 800px;
     padding-bottom: 56.25%;
+    padding-top: 70px; */
+    position: relative;
+    height: 0px;
     padding-top: 70px;
+    padding-bottom: 56.25%;
+    overflow: hidden;
 }
 
 .banner-video iframe {
@@ -121,8 +166,11 @@ body {
     position: absolute;
     z-index: 1;
     right: 10px;
-    top: 100px;
+    top: 150px;
+    background: rgb(151, 151, 151, 0.5);
     border-radius: 50%;
+    border: 0px;
+    color: white;
 }
 
 
@@ -194,40 +242,74 @@ body {
     transition-delay: 0.3s;
 }
 
+/*영화 상세 정보 페이지*/
+.detail-container {
+    padding-top: 90px;
+}
 
-@media screen and (max-width: 63rem) {
-    .banner-info h1 {
-        font-size: 30px;
+.detail-poster {
+    width: 100%;
+    height: 100%;
+}
 
-    }
+.detail-container h4 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
 
-    .banner-info span {
-        font-size: 10px;
+.detail-badge {
+    margin-top: 10px;
+    margin-right: 10px;
+    font-size: 13px;
+}
 
-    }
+.detail-tag-line {
+    margin: 10px 0px;
+    font-size: 20px;
+    font-style: italic;
+}
 
-    .banner-info {
-        width: 80%;
-        margin: 50px;
-    }
+.detail-vote span {
+    margin: 5px 10px 5px 0;
+    font-style: italic;
+}
 
-    .intro-typing h2 {
-        font-size: 20px;
-    }
+.detail-origin-title {
+    color: grey;
+    font-size: 15px;
+}
 
-    .intro-typing {
-        left: 50px;
-        right: 50px;
-    }
+.detail-movie-info {
+    width: 60px;
+    margin-right: 8px;
+}
 
-    .overlay {
-        opacity: 1;
-    }
+/*영화 배우 cast card*/
+.castcard {
+    margin-right: 10px;
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+    padding-bottom: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: black;
+}
 
-    .head hr {
-        display: block;
-        width: 100%;
-        border-bottom: solid 1px white;
-        transition: all 0.5s;
-    }
+.castcard img {
+    width: 100%;
+    height: 180px;
+}
+
+.castcard-info {
+    height: 80px;
+    color: white;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.castcard-info .name {
+    font-weight: 600;
+}
+
+.castcard-info .character {
+    font-weight: 200;
 }

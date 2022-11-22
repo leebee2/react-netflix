@@ -8,7 +8,6 @@ function movieReducer(state = initialState, action) {
     switch (type) {
         case "MAIN_VIDEO_FLAG":
             return { ...state, mainVideoClick: payload.mainVideoClick }
-            break;
         default:
             return { ...state }
     }

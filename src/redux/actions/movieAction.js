@@ -42,13 +42,25 @@ function getMovieVideo(id) {
     }
 }
 
-function getMovieDetail(id) {
+function getMovieDetail(id, movieData) {
     return async (dispatch) => {
         try {
+            if (movieData != null) {
+                dispatch({ type: 'GET_MOVIE_DETAIL_REFRESH' })
+            }
 
             const movieDetailApi = await api.get(`/movie/${id}?api_key=${API_KEY}&language=ko`)
+            const movieCreditsApi = await api.get(`/movie/${id}/credits?api_key=${API_KEY}&language=KO`)
 
-            dispatch({ type: 'GET_MOVIE_DETAIL', payload: { movieDetail: movieDetailApi.data } })
+            let [movieDetail, movieCredits] = await Promise.all([movieDetailApi, movieCreditsApi]);
+
+            dispatch({
+                type: 'GET_MOVIE_DETAIL',
+                payload: {
+                    movieDetail: movieDetail.data,
+                    movieCredits: movieCredits.data,
+                }
+            })
         } catch (error) {
             console.log(error);
         }

@@ -4,7 +4,9 @@ let initialState = {
     topRatedMovies: {},
     upcomingMovies: {},
     genreList: {},
-    movieDetail : null,
+    movieVideo: undefined,
+    movieDetail: null,
+    movieCredits: {},
 }
 
 function movieReducer(state = initialState, action) {
@@ -27,7 +29,9 @@ function movieReducer(state = initialState, action) {
         case 'GET_MOVIE_VIDEO': 
             return { ...state, movieVideo: payload.movieVideo }
         case 'GET_MOVIE_DETAIL':
-            return { ...state, movieDetail: payload.movieDetail }
+            return { ...state, movieDetail: payload.movieDetail, movieCredits: payload.movieCredits }
+        case 'GET_MOVIE_DETAIL_REFRESH':
+            return { ...state, movieDetail: null }
         default:
             return {...state}
     }
