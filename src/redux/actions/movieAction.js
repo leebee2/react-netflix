@@ -50,15 +50,17 @@ function getMovieDetail(id, movieData) {
             }
 
             const movieDetailApi = await api.get(`/movie/${id}?api_key=${API_KEY}&language=ko`)
-            const movieCreditsApi = await api.get(`/movie/${id}/credits?api_key=${API_KEY}&language=KO`)
-
-            let [movieDetail, movieCredits] = await Promise.all([movieDetailApi, movieCreditsApi]);
+            const movieCreditsApi = await api.get(`/movie/${id}/credits?api_key=${API_KEY}&language=ko-KR`)
+            const movieSimilarApi = await api.get(`/movie/${id}/similar?api_key=${API_KEY}&language=ko-KR`)
+        
+            let [movieDetail, movieCredits, movieSimilar] = await Promise.all([movieDetailApi, movieCreditsApi, movieSimilarApi]);
 
             dispatch({
                 type: 'GET_MOVIE_DETAIL',
                 payload: {
                     movieDetail: movieDetail.data,
                     movieCredits: movieCredits.data,
+                    movieSimilar: movieSimilar.data,
                 }
             })
         } catch (error) {

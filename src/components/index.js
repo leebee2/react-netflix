@@ -1,13 +1,15 @@
-import Navigation from './Navigation';
 import Banner from './Banner';
-import MovieSlide from './MovieSlide';
 import CastCard from './CastCard';
 import MovieCard from './MovieCard';
+import MovieDetailInfo from './MovieDetailInfo';
+import MovieSlide from './MovieSlide';
+import Navigation from './Navigation';
 
 export {
-    Navigation,
     Banner,
-    MovieSlide,
     CastCard,
-    MovieCard
+    MovieCard,
+    MovieDetailInfo,
+    MovieSlide,
+    Navigation,
 }

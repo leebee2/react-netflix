@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/react-netflix/static/css/main.fe9234ca.css",
-    "main.js": "/react-netflix/static/js/main.7e466c71.js",
+    "main.css": "/react-netflix/static/css/main.896f44b6.css",
+    "main.js": "/react-netflix/static/js/main.f91e2a54.js",
     "static/js/787.20e5b628.chunk.js": "/react-netflix/static/js/787.20e5b628.chunk.js",
     "static/media/background.jpeg": "/react-netflix/static/media/background.3fce89e9a1eb2ded0f86.jpeg",
     "static/media/revicons.eot": "/react-netflix/static/media/revicons.a77de540a38981833f9e.eot",
     "static/media/revicons.ttf": "/react-netflix/static/media/revicons.57fd05d4ae650374c8de.ttf",
     "static/media/revicons.woff": "/react-netflix/static/media/revicons.e8746a624ed098489406.woff",
     "index.html": "/react-netflix/index.html",
-    "main.fe9234ca.css.map": "/react-netflix/static/css/main.fe9234ca.css.map",
-    "main.7e466c71.js.map": "/react-netflix/static/js/main.7e466c71.js.map",
+    "main.896f44b6.css.map": "/react-netflix/static/css/main.896f44b6.css.map",
+    "main.f91e2a54.js.map": "/react-netflix/static/js/main.f91e2a54.js.map",
     "787.20e5b628.chunk.js.map": "/react-netflix/static/js/787.20e5b628.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fe9234ca.css",
-    "static/js/main.7e466c71.js"
+    "static/css/main.896f44b6.css",
+    "static/js/main.f91e2a54.js"
   ]
 }

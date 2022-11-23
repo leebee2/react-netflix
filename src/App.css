@@ -6,44 +6,6 @@ body {
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-@media screen and (max-width: 50rem) {
-
-    .banner-info {
-        width: 80%;
-        margin: 50px;
-    }
-
-    .banner-info h1 {
-        font-size: 30px;
-
-    }
-
-    .banner-info span {
-        font-size: 10px;
-
-    }
-
-    .intro-typing h2 {
-        font-size: 20px;
-    }
-
-    .intro-typing {
-        left: 50px;
-        right: 50px;
-    }
-
-    .overlay {
-        opacity: 1;
-    }
-
-    .head hr {
-        display: block;
-        width: 100%;
-        border-bottom: solid 1px white;
-        transition: all 0.5s;
-    }
-}
-
 /* 인트로 */
 .intro {
     height: 100vh;
@@ -252,11 +214,6 @@ body {
     height: 100%;
 }
 
-.detail-container h4 {
-    margin-top: 30px;
-    margin-bottom: 15px;
-}
-
 .detail-badge {
     margin-top: 10px;
     margin-right: 10px;
@@ -282,6 +239,19 @@ body {
 .detail-movie-info {
     width: 60px;
     margin-right: 8px;
+}
+
+.detail-cast {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.detail-cast Button{
+    font-size: 15px;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 /*영화 배우 cast card*/
@@ -312,4 +282,44 @@ body {
 
 .castcard-info .character {
     font-weight: 200;
+}
+
+
+
+@media screen and (max-width: 50rem) {
+
+    .banner-info {
+        width: 80%;
+        margin: 50px;
+    }
+
+    .banner-info h1 {
+        font-size: 30px;
+
+    }
+
+    .banner-info span {
+        font-size: 10px;
+
+    }
+
+    .intro-typing h2 {
+        font-size: 20px;
+    }
+
+    .intro-typing {
+        left: 50px;
+        right: 50px;
+    }
+
+    .overlay {
+        opacity: 1;
+    }
+
+    .head hr {
+        display: block;
+        width: 100%;
+        border-bottom: solid 1px white;
+        transition: all 0.5s;
+    }
 }

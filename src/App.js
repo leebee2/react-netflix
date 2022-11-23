@@ -2,8 +2,9 @@ import { Route, Routes } from 'react-router-dom';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-multi-carousel/lib/styles.css';
 
-import { Home, Movies, MovieDetail, Intro } from './pages';
+import { Home, Movies, MovieDetail, Intro, MovieCrew } from './pages';
 import { Navigation } from './components';
 import { useLocation } from "react-router-dom";
 
@@ -27,6 +28,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/movies/:id" element={<MovieDetail />} />
+        <Route path="/crew" element={<MovieCrew />} />
      </Routes>
     </div>
   );

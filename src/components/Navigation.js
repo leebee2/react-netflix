@@ -29,8 +29,6 @@ const Navigation = () => {
         }
     }, [])
 
-    console.log(navShow);
-
     return (
         <div className={navShow || mainVideoClick ? "nav-bar-down" : "nav-bar-up"}>
             <Navbar bg="navbar-inverse" variant='dark' expand="lg" >
