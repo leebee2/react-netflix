@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Badge } from 'react-bootstrap';
 
 
 const MovieDetailInfo = ({ movieDetail, movieCredits }) => {
+    const [limitText, setLimitText] = useState(300); 
+
+    const textEllipsis = (str, limit) => {
+        return {
+            string: str.slice(0, limit),
+            isShowMore: str.length > limit
+        }
+    };
+
+
     return (
         <div>
             <h1>{movieDetail.title}</h1>
             <div className='detail-origin-title'>
-                {movieDetail.original_title}, ({movieDetail.release_date.slice(0, 4)})
+                {movieDetail.original_title}, {movieDetail.release_date.slice(0, 4)}
             </div>
             <div>
                 {movieDetail.genres.map((item, index) =>
@@ -54,8 +64,13 @@ const MovieDetailInfo = ({ movieDetail, movieCredits }) => {
                 {movieDetail.runtime}분
             </div>
             <hr />
-            <div>
-                {movieDetail.overview}
+            <div className='detail-overview'>
+                {textEllipsis(movieDetail.overview, limitText).string}
+                {movieDetail.overview.length >= 300 && (textEllipsis(movieDetail.overview, limitText).isShowMore ? 
+                    <span onClick={() => setLimitText(movieDetail.overview.length)}>...더보기</span>
+                    : 
+                    <span onClick={() => setLimitText(300)}>줄이기</span>
+                )}
             </div>
         </div>
     );

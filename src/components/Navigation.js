@@ -12,7 +12,7 @@ const Navigation = () => {
     const { mainVideoClick } = useSelector(state => state.main)
 
     useEffect(() => {
-        if (location.pathname.indexOf('/home') == -1) {
+        if (location.pathname.indexOf('/home') === -1) {
             setNavShow(true);
         } else { //홈화면일 경우
             window.addEventListener("scroll", () => {

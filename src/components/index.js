@@ -4,6 +4,8 @@ import MovieCard from './MovieCard';
 import MovieDetailInfo from './MovieDetailInfo';
 import MovieSlide from './MovieSlide';
 import Navigation from './Navigation';
+import SingleCard from './SingleCard';
+
 
 export {
     Banner,
@@ -12,4 +14,5 @@ export {
     MovieDetailInfo,
     MovieSlide,
     Navigation,
+    SingleCard
 }

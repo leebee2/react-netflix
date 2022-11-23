@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { movieAction } from '../redux/actions/movieAction';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 const Banner = ({ movie }) => {

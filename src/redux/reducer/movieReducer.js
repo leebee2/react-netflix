@@ -7,7 +7,8 @@ let initialState = {
     movieVideo: undefined,
     movieDetail: null,
     movieCredits: {},
-    movieSimilar: {},
+    movieSimilar: [],
+    movieNowPlay: [],
 }
 
 function movieReducer(state = initialState, action) {
@@ -36,12 +37,25 @@ function movieReducer(state = initialState, action) {
                 movieCredits: payload.movieCredits,
                 movieSimilar: payload.movieSimilar
             }
+        case 'GET_MOVIE_DETAIL_ADD_GENRE':
+            return {
+                ...state,
+                movieDetail: payload.movieDetail,
+                movieCredits: payload.movieCredits,
+                movieSimilar: payload.movieSimilar,
+                genreList: payload.genreList,
+            }
         case 'GET_MOVIE_DETAIL_REFRESH':
             return {
                 ...state,
                 movieDetail: null,
                 movieCredits: {},
                 movieSimilar: {},
+            }
+        case 'GET_MOVIE_NOW_PLAY': 
+            return {
+                ...state,
+                movieNowPlay: payload.movieNowPlay,
             }
         default:
             return {...state}
