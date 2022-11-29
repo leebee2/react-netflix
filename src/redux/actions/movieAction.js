@@ -97,7 +97,7 @@ function getMovieNowPlay(activePage, selectGenre) {
             const { genreList } = getState().movie;
             let nowPlayURL = `/movie/now_playing?api_key=${API_KEY}&page=${activePage}&language=ko-KR&region=KR`
 
-            if (selectGenre !== 0) {
+            if (selectGenre != 0) {
                 nowPlayURL += `&with_genres=${selectGenre}`
             }
             const MovieNowPlayApi = await api.get(nowPlayURL)
@@ -140,7 +140,7 @@ function getSearchMovies(keyword, activePage, selectGenre) {
                 searchURL = `/movie/now_playing?api_key=${API_KEY}&page=${activePage}&language=ko-KR`;
             }
 
-            if (selectGenre !== 0) {
+            if (selectGenre != 0) {
                 searchURL += `&with_genres=${selectGenre}`
             }
 
