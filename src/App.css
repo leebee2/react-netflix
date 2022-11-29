@@ -49,11 +49,16 @@ body {
     background-color: rgba(0, 0, 0, 0);
 }
 
-.nav-bar-item {
+.nav-bar-item{
     color: white;
     text-decoration: none;
     margin-right: 20px;
 }
+
+.nav-bar-item:hover {
+    color: rgb(172, 2, 2)
+}
+
 
 /* 홈화면 */
 .spinner {
@@ -291,28 +296,58 @@ body {
 }
 
 /* 최신 영화 카드 */
-.movies-container {
+.now-movies-container {
     padding-top: 90px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
+.now-movies-bar {
+    display: flex;
+    margin: 20px 0 20px 0;
+}
+
+.now-movies-bar Select {
+    margin-left: 20px;
+    width: 100px;
+    color: white;
+    height: 33px;
+    font-size: 0.8rem;
+    width: 109px;
+    background-color: rgb(255, 255, 255, 0);
+}
+
+.now-movies-none {
+    color: white;
+    font-size: 20px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(179, 82, 82, 0.2);
+}
+
 .single-card {
     position: relative;
     display: block;
+    max-width: 600px;
     height: 100%;
     overflow: hidden;
     border-radius: 10px;
     transition: all 0.4s;
     text-decoration-line: none;
-    color : white;
+    color: white;
+}
+
+.single-card.lazy {
+    background-image: none;
 }
 
 .single-card:hover {
     transform: scale(1.05);
     transition: all 0.5s;
-    color : red;
+    color: red;
 }
 
 .single-info {
@@ -322,7 +357,7 @@ body {
     background-blend-mode: multiply;
     border-radius: 10px;
     margin-bottom: 30px;
-    background-color :rgba(0, 0, 0, 0.5)
+    background-color: rgba(0, 0, 0, 0.5)
 }
 
 .single-header {
@@ -343,6 +378,36 @@ body {
 
 .single-card p {
     color: #cfd6e1;
+}
+
+/* 페이지네이션 */
+.pagination {
+    justify-content: center;
+    margin-top: 15px;
+    list-style: none;
+    border: 0;
+    color: white;
+}
+
+.pagination li {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.pagination li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+}
+
+.pagination li.active {
+    background-color: red;
+    border-radius: 50px;
 }
 
 

@@ -54,7 +54,7 @@ const MovieDetail = () => {
     const nav = useNavigate();
     const dispatch = useDispatch();
     const { id } = useParams();
-    const { movieDetail, movieCredits, movieSimilar } = useSelector(state => state.movie);
+    const { movieDetail, movieCredits, movieSimilar , loading} = useSelector(state => state.movie);
 
     const getMovieDetail = useCallback(() => {
         dispatch(movieAction.getMovieDetail(id));
@@ -66,7 +66,7 @@ const MovieDetail = () => {
 
     return (
         <>
-            {movieDetail == null ?
+            {movieDetail == null || loading ?
                 (< Loadingbar loading={true} />)
                 :
                 (<Container className='detail-container'>

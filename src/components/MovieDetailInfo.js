@@ -45,7 +45,7 @@ const MovieDetailInfo = ({ movieDetail, movieCredits }) => {
             <hr />
             <div>
                 <Badge bg="danger" className='detail-movie-info'>감독</Badge>
-                {(movieCredits?.crew?.filter(({ job }) => job === 'Director'))[0].name}
+                {(movieCredits?.crew?.filter(({ job }) => job.includes('Director')))[0].name}
             </div>
             <div>
                 <Badge bg="danger" className='detail-movie-info'>제작예산</Badge>

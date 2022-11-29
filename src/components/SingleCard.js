@@ -9,20 +9,20 @@ const SingleCard = ({ item }) => {
 
     return (
         <Link to={`/movies/${item.id}`} className='single-card'>
-            <div 
+            <div
                 className="single-info"
-                style={{
-                backgroundImage: `url('${imgBaseUrl}${item.backdrop_path}')`,
-                height: '300px',
-                }}>
+                style={item.backdrop_path !== null ? {
+                    backgroundImage: `url('${imgBaseUrl}${item.backdrop_path}')`,
+                    height: '300px'
+                } : {}}>
                 <Container>
                     <Row>
                         <Col className='single-header'>
-                            <img
+                            {item.poster_path !== null && <img
                                 alt='poster'
                                 className="locandina"
-                                src={`https://image.tmdb.org/t/p/original//${item.poster_path}`}
-                            />
+                                src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
+                            />}
                             <h2>{item.title}<span>({item.release_date.substr(0, 4)})</span></h2>
                         </Col>
                     </Row>

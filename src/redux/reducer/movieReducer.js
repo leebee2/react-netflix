@@ -9,6 +9,7 @@ let initialState = {
     movieCredits: {},
     movieSimilar: [],
     movieNowPlay: [],
+    SearchMovies : {},
 }
 
 function movieReducer(state = initialState, action) {
@@ -35,7 +36,8 @@ function movieReducer(state = initialState, action) {
                 ...state,
                 movieDetail: payload.movieDetail,
                 movieCredits: payload.movieCredits,
-                movieSimilar: payload.movieSimilar
+                movieSimilar: payload.movieSimilar,
+                loading: false,
             }
         case 'GET_MOVIE_DETAIL_ADD_GENRE':
             return {
@@ -44,6 +46,7 @@ function movieReducer(state = initialState, action) {
                 movieCredits: payload.movieCredits,
                 movieSimilar: payload.movieSimilar,
                 genreList: payload.genreList,
+                loading: false,
             }
         case 'GET_MOVIE_DETAIL_REFRESH':
             return {
@@ -51,12 +54,35 @@ function movieReducer(state = initialState, action) {
                 movieDetail: null,
                 movieCredits: {},
                 movieSimilar: {},
+                loading: true,
             }
         case 'GET_MOVIE_NOW_PLAY': 
             return {
                 ...state,
                 movieNowPlay: payload.movieNowPlay,
+                loading: false,
             }
+        case 'GET_MOVIE_NOW_PLAY_ADD_GENRE':
+            return {
+                ...state,
+                movieNowPlay: payload.movieNowPlay,
+                genreList: payload.genreList,
+                loading: false,
+            }
+        case 'GET_SEARCH_MOVIE':
+            return {
+                ...state,
+                SearchMovies: payload.SearchMovies,
+                loading: false,
+            }
+        case 'GET_SEARCH_MOVIE_ADD_GENRE':
+            return {
+                ...state,
+                SearchMovies: payload.SearchMovies,
+                genreList: payload.genreList,
+                loading: false,
+            }
+
         default:
             return {...state}
     }

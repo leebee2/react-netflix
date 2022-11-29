@@ -1,9 +1,9 @@
 import Home from "./Home";
-import Movies from "./Movies";
 import MovieDetail from "./MovieDetail";
 import Intro from "./Intro";
 import MovieCrew from "./MovieCrew";
+import MoviesPage from './MoviesPage';
 
 export {
-    Home, Movies, MovieDetail, Intro, MovieCrew
+    Home, MoviesPage, MovieDetail, Intro, MovieCrew
 };

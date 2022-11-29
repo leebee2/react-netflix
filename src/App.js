@@ -4,7 +4,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-multi-carousel/lib/styles.css';
 
-import { Home, Movies, MovieDetail, Intro, MovieCrew } from './pages';
+import { Home, MovieDetail, Intro, MovieCrew, MoviesPage } from './pages';
 import { Navigation } from './components';
 import { useLocation } from "react-router-dom";
 
@@ -26,7 +26,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Intro />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/movies" element={<Movies />} />
+        <Route path="/nowmovies" element={<MoviesPage type="now"/>} />
+        <Route path="/movies" element={<MoviesPage type="all" />} />
         <Route path="/movies/:id" element={<MovieDetail />} />
         <Route path="/crews/:id" element={<MovieCrew />} />
      </Routes>

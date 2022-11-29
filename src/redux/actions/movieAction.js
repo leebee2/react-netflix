@@ -3,7 +3,7 @@ import api from '../api';
 const API_KEY = process.env.REACT_APP_MOVIE_KEY;
 
 function getMovies() {
-    return async(dispatch) => {
+    return async (dispatch) => {
         try {
             dispatch({ type: 'GET_MOVIES_REQUEST' });
 
@@ -35,7 +35,7 @@ function getMovieVideo(id) {
 
             const movieVideoApi = await api.get(`/movie/${id}/videos?api_key=${API_KEY}&language=ko-KR`)
 
-            dispatch({ type: 'GET_MOVIE_VIDEO', payload: { movieVideo: movieVideoApi.data.results[0] }})
+            dispatch({ type: 'GET_MOVIE_VIDEO', payload: { movieVideo: movieVideoApi.data.results[0] } })
         } catch (error) {
             console.log(error);
         }
@@ -49,6 +49,8 @@ function getMovieDetail(id) {
 
             if (MovieDetail != null) {
                 dispatch({ type: 'GET_MOVIE_DETAIL_REFRESH' })
+            } else {
+                dispatch({ type: 'GET_MOVIES_REQUEST' });
             }
 
             const movieDetailApi = await api.get(`/movie/${id}?api_key=${API_KEY}&language=ko-KR`)
@@ -82,26 +84,91 @@ function getMovieDetail(id) {
                 })
             }
         } catch (error) {
-            console.log(error);
+            dispatch({ type: 'GET_MOVIES_FAILURE' });
         }
     }
 }
 
-function getMovieNowPlay() {
-    return async (dispatch) => {
+function getMovieNowPlay(activePage, selectGenre) {
+    return async (dispatch, getState) => {
         try {
+            dispatch({ type: 'GET_MOVIES_REQUEST' });
 
-            const MovieNowPlayApi = await api.get(`/movie/now_playing?api_key=${API_KEY}&page=1&language=ko-KR&region=KR`)
+            const { genreList } = getState().movie;
+            let nowPlayURL = `/movie/now_playing?api_key=${API_KEY}&page=${activePage}&language=ko-KR&region=KR`
 
-            dispatch({
-                type: 'GET_MOVIE_NOW_PLAY',
-                payload: { movieNowPlay : MovieNowPlayApi.data }
-            })
+            if (selectGenre !== 0) {
+                nowPlayURL += `&with_genres=${selectGenre}`
+            }
+            const MovieNowPlayApi = await api.get(nowPlayURL)
+
+            if (Object.keys(genreList).length === 0) { //화면 새로고침으로 인한 추가작업
+                const genreApi = api.get(`/genre/movie/list?api_key=${API_KEY}&language=ko-KR`);
+
+                let [MovieNowPlay, genreList] = await Promise.all([MovieNowPlayApi, genreApi]);
+
+                dispatch({
+                    type: 'GET_MOVIE_NOW_PLAY_ADD_GENRE',
+                    payload: {
+                        movieNowPlay: MovieNowPlay.data,
+                        genreList: genreList.data.genres
+                    }
+                })
+            } else {
+                dispatch({
+                    type: 'GET_MOVIE_NOW_PLAY',
+                    payload: { movieNowPlay: MovieNowPlayApi.data }
+                })
+            }
         } catch (error) {
-            console.log(error);
+            dispatch({ type: 'GET_MOVIES_FAILURE' });
         }
     }
 }
-    
 
-export const movieAction = { getMovies, getMovieVideo, getMovieDetail, getMovieNowPlay };
+function getSearchMovies(keyword, activePage, selectGenre) {
+    return async (dispatch, getState) => {
+        try {
+            dispatch({ type: 'GET_MOVIES_REQUEST' });
+
+            const { genreList } = getState().movie;
+            let searchURL = '';
+
+            if (keyword !== '') {
+                searchURL = `/search/movie?api_key=${API_KEY}&query=${keyword}&page=${activePage}&language=ko-KR`;
+            } else {
+                searchURL = `/movie/now_playing?api_key=${API_KEY}&page=${activePage}&language=ko-KR`;
+            }
+
+            if (selectGenre !== 0) {
+                searchURL += `&with_genres=${selectGenre}`
+            }
+
+            const SearchMoviesApi = await api.get(searchURL)
+
+            if (Object.keys(genreList).length === 0) { //화면 새로고침으로 인한 추가작업
+                const genreApi = api.get(`/genre/movie/list?api_key=${API_KEY}&language=ko-KR`);
+
+                let [SearchMovies, genreList] = await Promise.all([SearchMoviesApi, genreApi]);
+
+                dispatch({
+                    type: 'GET_SEARCH_MOVIE_ADD_GENRE',
+                    payload: {
+                        SearchMovies: SearchMovies.data,
+                        genreList: genreList.data.genres
+                    }
+                })
+            } else {
+                dispatch({
+                    type: 'GET_SEARCH_MOVIE',
+                    payload: { SearchMovies: SearchMoviesApi.data }
+                })
+            }
+        } catch (error) {
+            dispatch({ type: 'GET_MOVIES_FAILURE' });
+        }
+    }
+}
+
+
+export const movieAction = { getMovies, getMovieVideo, getMovieDetail, getMovieNowPlay, getSearchMovies };

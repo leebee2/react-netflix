@@ -8,14 +8,15 @@ const MovieCard = ({ item, page = null }) => {
     const { genreList } = useSelector(state => state.movie);
     const imgBaseUrl = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2';
 
+    
     return (
         <Link
             to={`/movies/${item.id}`}
             className='card'
-            style={{
+            style={item.backdrop_path !== null ? {
                 backgroundImage: `url('${imgBaseUrl}${item.backdrop_path}')`,
                 height: "220px"
-            }}>
+            } : {}}>
 
             <Container className='overlay'>
                 <Row>
